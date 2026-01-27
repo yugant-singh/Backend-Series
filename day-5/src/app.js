@@ -1,22 +1,49 @@
-const express  = require("express")
-const app = express();
+const express = require("express")
+const app = express()
 
 app.use(express.json())
 
-
 const products = []
 
-app.post("/products", (req,res)=>{
-products.push(req.body);
-console.log(products);
-res.status(201).json({
-    message:"product detail added successfully"
+//POST Method 
+app.post("/products", (req, res) => {
+    products.push(req.body);
+    res.status(201).json({
+        message: "product details added successfully"
+    })
 })
+//GET Method
+app.get("/products", (req, res) => {
+    res.status(200).json({
+        success: true,
+        data: products
+    })
 })
 
-app.get("/products",(req,res)=>{
+//GET Method Dynamically
+app.get("/products/:id", (req, res) => {
+    console.log(req.params.id);
     res.status(200).json({
-    message:products
+        success: true,
+        data: products[req.params.id]
+    })
+})
+
+//PATCH Method
+app.patch("/products/:id", (req, res) => {
+    products[req.params.id].price = req.body.price
+    res.status(201).json({
+        success: true,
+        message: products[req.params.id]
+    })
+})
+//Delete Method
+
+app.delete("/products/:id",(req,res)=>{
+   delete products[req.params.id]
+    res.status(200).json({
+        success:true,
+        message:"product deleted successfully"
     })
 })
 
@@ -24,12 +51,4 @@ app.get("/products",(req,res)=>{
 
 
 
-
-
-
-
-
-
-
-
-module.exports= app
+module.exports = app
