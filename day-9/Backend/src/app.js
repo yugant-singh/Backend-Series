@@ -1,6 +1,9 @@
 const express  = require("express")
 const app = express()
+ const cors = require("cors")
+ app.use(cors())
 app.use(express.json())
+app.use("/images", express.static("public/images"))
 const userModel = require("./model/user.model")
 
 //POST Method
@@ -46,8 +49,8 @@ console.log(id);
 app.patch("/api/users/:id", async (req,res)=>{
 
     const id = req.params.id
-    const {role} = req.body
-   const user  = await  userModel.findByIdAndUpdate(id,{role})
+    const {profileUrl} = req.body
+   const user  = await  userModel.findByIdAndUpdate(id,{profileUrl})
    res.status(200).json({
     message:"changes successfully updaated",
     user
