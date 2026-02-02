@@ -1,34 +1,35 @@
 const express = require("express");
 const app = express();
-const noteModel = require("./models/note.model")
+const userModel = require("./model/user.model")
 
 app.use(express.json());
 
-//POST Method 
+//POST Method
 
-app.post("/notes", async (req,res)=>{
-    const {title,description} = req.body;
-   const note = await noteModel.create({
-        title,description
+app.post("/users", async (req, res) => {
+    const { id, username, city } = req.body
+    const user = await userModel.create({
+        id, username, city
     })
-      
+    res.status(201).json({
+        message: "user create successfully",
+        user
+    })
+})
+
+//GET Method
+app.get("/users", async(req,res)=>{
+
+    const users  =  await  userModel.find()
     res.status(200).json({
-        message:"note created successfully",
-        note
+
+        Message:"users data fetched successfully",
+        users
+        
     })
-})
-
-// GET Method
-
-app.get("/notes",async (req,res)=>{
-
-  const notes  =  await noteModel.find()
-  res.status(201).json({
-    message:"Data Fetched successfully",
-    notes
-  })
 
 })
+
 
 
 
