@@ -1,68 +1,336 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+}
+
+/* Form Styling */
+.form {
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  flex-direction: column;
+  padding: 2rem;
+  gap: 1rem;
+  border: 2px solid #0f3460;
+  border-radius: 1rem;
+  width: 90%;
+  max-width: 500px;
+  margin: 20px auto;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.form input {
+  padding: 1rem;
+  border-radius: 0.7rem;
+  outline: none;
+  border: 2px solid transparent;
+  background: rgba(255, 255, 255, 0.9);
+  font-size: 1rem;
+  transition: all 0.3s ease;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+.form input:focus {
+  border: 2px solid #e94560;
+  background: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(233, 69, 96, 0.3);
+}
+
+.form input::placeholder {
+  color: #666;
+}
+
+.form button {
+  padding: 1rem 2rem;
+  border-radius: 0.7rem;
+  outline: none;
+  border: none;
+  width: 100%;
+  background: linear-gradient(135deg, #e94560 0%, #d63447 100%);
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 15px rgba(233, 69, 96, 0.4);
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+.form button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(233, 69, 96, 0.6);
+}
+
+.form button:active {
+  transform: translateY(-1px);
+}
+
+/* Card List Styling */
+.card-list {
+  min-height: calc(100vh - 300px);
+  width: 100%;
+  color: white;
+  padding: 2rem;
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  overflow: auto;
+}
+
+/* Card Styling */
+.card-list .card {
+  height: auto;
+  min-height: 220px;
+  width: 100%;
+  max-width: 450px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1.2rem;
+  display: flex;
+  align-items: center;
+  padding: 1.5rem;
+  gap: 1.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(233, 69, 96, 0.3);
+  border-color: rgba(233, 69, 96, 0.5);
+}
+
+.card img {
+  height: 140px;
+  width: 140px;
+  min-width: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  border: 3px solid #e94560;
+  box-shadow: 0 4px 15px rgba(233, 69, 96, 0.4);
+  transition: all 0.3s ease;
+}
+
+.card:hover img {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(233, 69, 96, 0.6);
+}
+
+.card .detail {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  flex: 1;
+}
+
+.detail h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 0.2rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.detail h4 {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #e94560;
+  opacity: 0.95;
+}
+
+.detail h5 {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #a8dadc;
+  opacity: 0.9;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.detail h5::before {
+  content: "📍";
+  font-size: 0.9rem;
+}
+
+.detail p {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+}
+
+/* Button Container */
+.btn {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 0.5rem;
+}
+
+.card button {
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.6rem;
+  outline: none;
+  border: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Delete Button */
+.btn button:first-child {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+}
+
+.btn button:first-child:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(255, 107, 107, 0.5);
+}
+
+/* Edit Button */
+.btn button:last-child {
+  background: linear-gradient(135deg, #4ecdc4 0%, #44a5a0 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(78, 205, 196, 0.3);
+}
+
+.btn button:last-child:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(78, 205, 196, 0.5);
+}
+
+.btn button:active {
+  transform: translateY(0);
+}
+
+/* Scrollbar Styling */
+.card-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.card-list::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+
+.card-list::-webkit-scrollbar-thumb {
+  background: #e94560;
+  border-radius: 10px;
+}
+
+.card-list::-webkit-scrollbar-thumb:hover {
+  background: #d63447;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .form {
+    width: 95%;
+    padding: 1.5rem;
   }
-  a:hover {
-    color: #747bff;
+
+  .card-list {
+    padding: 1rem;
+    gap: 1rem;
   }
-  button {
-    background-color: #f9f9f9;
+
+  .card-list .card {
+    flex-direction: column;
+    text-align: center;
+    max-width: 100%;
+    padding: 1.5rem 1rem;
   }
+
+  .card img {
+    height: 120px;
+    width: 120px;
+    min-width: 120px;
+  }
+
+  .detail h2 {
+    font-size: 1.5rem;
+  }
+
+  .detail h4 {
+    font-size: 1rem;
+  }
+
+  .btn {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .card button {
+    flex: 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .form {
+    padding: 1rem;
+  }
+
+  .form input {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  .form button {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  .card img {
+    height: 100px;
+    width: 100px;
+    min-width: 100px;
+  }
+
+  .detail h2 {
+    font-size: 1.3rem;
+  }
+}
+
+/* Empty State */
+.card-list:empty::after {
+  content: "No users found. Create your first user!";
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 1.2rem;
+  text-align: center;
+  width: 100%;
+  padding: 3rem;
+}
+
+/* Loading Animation */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.card.loading {
+  animation: pulse 1.5s ease-in-out infinite;
 }

@@ -1,33 +1,125 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { use, useEffect, useState } from 'react'
+import axios from 'axios'
+import Card from './components/Card'
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+
+  const [users, setusers] = useState([])
+  const [isEditing, setIsEditing] = useState(false)
+  const [editingUserID, setEditingUserID] = useState(null)
+ 
+   
+
+  function submitHandler(e){
+
+    e.preventDefault();
+   const {username,role,country,description,profileUrl} =e.target.elements
+if(isEditing){
+  axios.patch(`http://localhost:3000/api/users/${editingUserID}`,{
+
+     username:username.value,
+    role:role.value,
+    country:country.value,
+    description:description.value,
+    profileUrl:profileUrl.value
+  })
+  .then(()=>{
+    fetchUser()
+    setIsEditing(false)
+    setEditingUserID(null)
+      e.target.reset() 
+  })
+
+}
+else{
+
+
+   //Create user
+  axios.post('http://localhost:3000/api/users',{
+    username:username.value,
+    role:role.value,
+    country:country.value,
+    description:description.value,
+    profileUrl:profileUrl.value
+  })
+  .then((res)=>{
+    fetchUser()
+ e.target.reset()
+  })
+}
+   
+    
+  }
+
+  function editUser(user){
+
+    setIsEditing(true)
+    setEditingUserID(user._id)
+     document.querySelector('input[name="username"]').value = user.username
+  document.querySelector('input[name="role"]').value = user.role
+  document.querySelector('input[name="country"]').value = user.country
+  document.querySelector('input[name="description"]').value = user.description
+  document.querySelector('input[name="profileUrl"]').value = user.profileUrl
+  }
+
+//For Fetch User
+  function fetchUser() {
+    axios.get("http://localhost:3000/api/users")
+      .then((result) => {
+        setusers(result.data.users)
+      })
+  }
+  //For Delete User
+  function deleteUser(noteId) {
+    axios.delete(`http://localhost:3000/api/users/${noteId}`)
+      .then((res) => {
+
+        fetchUser();
+
+      })
+
+  }
+  useEffect(() => {
+    fetchUser()
+  }, [])
+
+
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <form className='form'onSubmit={submitHandler}  >
+        <input type="text" name="username" placeholder='Enter username' />
+        <input type="text" name="role" placeholder='Enter role' />
+        <input type="text" name="country" placeholder='Enter city' />
+        <input type="text" name="description" placeholder='Enter description' />
+        <input type="text" name="profileUrl" placeholder='Enter imageUrl' />
+        <button>{isEditing?"Update User":"Create User"}</button>
+      </form>
+      <div className='card-list'>
+
+        {users.map(function (item,idx) {
+          return <div key={idx} className="card">
+
+            <img src={item.profileUrl} alt="" />
+            <div className="detail">
+              <h2>{item.username}</h2>
+              <h4>{item.role}</h4>
+              <h5>{item.country}</h5>
+              <p>{item.description}</p>
+              <div className="btn">
+                <button onClick={() => {
+                deleteUser(item._id)
+              }}>Delete</button>
+              <button onClick={() => {
+                editUser(item)
+              }}>Edit</button>
+              </div>
+
+            </div>
+          </div>
+        })}
+
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
