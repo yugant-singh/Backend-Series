@@ -15,7 +15,7 @@ const App = () => {
     e.preventDefault();
    const {username,role,country,description,profileUrl} =e.target.elements
 if(isEditing){
-  axios.patch(`http://localhost:3000/api/users/${editingUserID}`,{
+  axios.patch(`https://backend-series-rexm.onrender.com/api/users/${editingUserID}`,{
 
      username:username.value,
     role:role.value,
@@ -35,7 +35,7 @@ else{
 
 
    //Create user
-  axios.post('http://localhost:3000/api/users',{
+  axios.post('https://backend-series-rexm.onrender.com/api/users',{
     username:username.value,
     role:role.value,
     country:country.value,
@@ -64,14 +64,14 @@ else{
 
 //For Fetch User
   function fetchUser() {
-    axios.get("http://localhost:3000/api/users")
+    axios.get("https://backend-series-rexm.onrender.com/api/users")
       .then((result) => {
         setusers(result.data.users)
       })
   }
   //For Delete User
   function deleteUser(noteId) {
-    axios.delete(`http://localhost:3000/api/users/${noteId}`)
+    axios.delete(`https://backend-series-rexm.onrender.com/api/users/${noteId}`)
       .then((res) => {
 
         fetchUser();
