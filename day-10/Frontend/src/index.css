@@ -1,0 +1,348 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #2b2b46 100%);
+  color: white;
+  overflow-x: hidden;
+}
+.full-page{
+  height: 100%;
+  width: 100%;
+  
+}
+
+/* Product List Container */
+.product-list {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 2.5rem;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* Product Card */
+.product {
+  height: 500px;
+  width: 350px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1.2rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  position: relative;
+}
+
+.product::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 107, 107, 0.1) 0%, rgba(78, 205, 196, 0.1) 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.product:hover::before {
+  opacity: 1;
+}
+
+
+
+/* Product Image */
+.product img {
+  height: 240px;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.4s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.product:hover img {
+  transform: scale(1.08);
+}
+
+/* Product Content */
+.product h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  padding: 0 1.5rem;
+  margin-top: 1rem;
+  line-height: 1.3;
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.product h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 0 1.5rem;
+  margin-top: 0.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.product h3:first-of-type {
+  color: #4ecdc4;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-top: 0.8rem;
+}
+
+.product h3:first-of-type::before {
+  content: '₹';
+  margin-right: 2px;
+}
+
+.product h3:nth-of-type(2) {
+  color: #ff6b6b;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: rgba(255, 107, 107, 0.15);
+  padding: 0.4rem 1rem;
+  border-radius: 2rem;
+  width: fit-content;
+  margin-left: 1.5rem;
+  margin-top: 0.6rem;
+  border: 1px solid rgba(255, 107, 107, 0.3);
+}
+
+.product p {
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+  padding: 0 1.5rem;
+  margin-top: 0.8rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 2;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Scrollbar Styling */
+.product-list::-webkit-scrollbar {
+  width: 10px;
+}
+
+.product-list::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+
+.product-list::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 100%);
+  border-radius: 10px;
+}
+
+.product-list::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #ff5252 0%, #3eb8af 100%);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .product-list {
+    padding: 2rem;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .product-list {
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+
+  .product {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .product img {
+    height: 220px;
+  }
+
+  .product h2 {
+    font-size: 1.3rem;
+  }
+
+  .product h3:first-of-type {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-list {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .product {
+    width: 100%;
+  }
+
+  .product img {
+    height: 200px;
+  }
+
+  .product h2 {
+    font-size: 1.2rem;
+    padding: 0 1rem;
+  }
+
+  .product h3 {
+    padding: 0 1rem;
+    font-size: 1rem;
+  }
+
+  .product h3:first-of-type {
+    font-size: 1.1rem;
+  }
+
+  .product h3:nth-of-type(2) {
+    font-size: 0.85rem;
+    margin-left: 1rem;
+  }
+
+  .product p {
+    font-size: 0.9rem;
+    padding: 0 1rem;
+    margin-bottom: 1rem;
+  }
+}
+
+/* Loading Animation */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.product.loading {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Empty State */
+.product-list:empty::after {
+  content: "No products available";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.4);
+  text-align: center;
+}
+
+/* Fade In Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+.product:nth-child(1) { animation-delay: 0.1s; }
+.product:nth-child(2) { animation-delay: 0.2s; }
+.product:nth-child(3) { animation-delay: 0.3s; }
+.product:nth-child(4) { animation-delay: 0.4s; }
+.product:nth-child(5) { animation-delay: 0.5s; }
+.product:nth-child(6) { animation-delay: 0.6s; }
+.product:nth-child(7) { animation-delay: 0.7s; }
+.product:nth-child(8) { animation-delay: 0.8s; }
+.product:nth-child(9) { animation-delay: 0.9s; }
+.product:nth-child(10) { animation-delay: 1s; }
+
+.product .btn{
+  display: flex;
+  padding: 1rem 2rem ;
+  
+}
+
+
+.btn button{
+  padding: 0.5rem 0.9rem;
+  outline: none;
+  border: none;
+  border-radius: 0.3rem;
+  font-weight: 700;
+  font-size: 1rem;
+
+}
+button:active{
+  scale: 0.9;
+}
+.form{
+width: 100%;
+  height: 200px;
+
+  padding: 1rem;
+ 
+}
+input{
+  margin: 1rem;
+  padding: 1.3rem 3rem;
+  border: none;
+
+  ;
+  color: green;
+  font-size: 20px;
+  outline: none;
+
+}
+
+.form button{
+    padding: 1.1rem 2rem;
+  outline: none;
+  border: none;
+  border-radius: 0.3rem;
+  font-weight: 700;
+  font-size: 1rem;
+  font-size: 1.4rem;
+  background: red;
+  color: white;
+}
