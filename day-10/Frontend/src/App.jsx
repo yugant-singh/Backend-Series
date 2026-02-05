@@ -13,7 +13,7 @@ const App = () => {
     e.preventDefault();
     const { name, price, category, imageUrl, description, stock } = e.target.elements;
     if (isediting) {
-      axios.patch(`https://backend-series-1.onrender.com/${editingProductID}`, {
+      axios.patch(`https://backend-series-1.onrender.com/api/products/${editingProductID}`, {
 
         name: name.value,
         price: price.value,
