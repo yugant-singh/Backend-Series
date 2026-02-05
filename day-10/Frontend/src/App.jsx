@@ -28,6 +28,7 @@ const App = () => {
           setIsediting(false)
           setEditingProductID(null)
           e.target.reset()
+           setIsOpenForm(false) 
         })
 
     }
@@ -46,6 +47,7 @@ const App = () => {
         .then((result) => {
           fetchProduct();
           e.target.reset()
+           setIsOpenForm(false) 
 
         })
     }
@@ -99,17 +101,20 @@ const App = () => {
     <div className='full-page'>
 
      <div className="main-btn">
-       <button onClick={() => {
+     <div className="heading">
+       <h1>Manage Your Products</h1>
+       
+     </div>
+       <button type='button' onClick={() => {
         setIsOpenForm(true)
       }} >Add Products</button>
- <button onClick={() => {
-        setIsOpenForm(false)
-      }} >Cancel</button>
+ 
 
      </div>
 
       {isOpenForm && (
-        <div className="form-sec">
+        <div className="overlay" onClick={()=>setIsOpenForm(false)} >
+        <div className="form-sec"onClick={(e)=>e.stopPropagation()}>
           <form className='form' onSubmit={submitHandler}>
             <input type="text" name="name" placeholder='Product Name' />
             <input type="text" name="price" placeholder='price' />
@@ -117,8 +122,10 @@ const App = () => {
             <input type="text" name="description" placeholder='Product Description' />
             <input type="text" name="stock" placeholder='Product Stock' />
             <input type="text" name="imageUrl" placeholder='Product Image URL' />
-            <button>{isediting ? "Update Product" : "Add Product"} </button>
+            <button  >{isediting ? "Update Product" : "Add Product"} </button>
+            
           </form>
+        </div>
         </div>
       )}
 
@@ -128,7 +135,7 @@ const App = () => {
         {products.map((product, idx) => {
 
           return <div key={idx} className='product'>
-            <img src={product.imageUrl} alt="product-image" />
+            <img src={product.imageUrl} alt="" />
             <h2>{product.name}</h2>
             <h3>{product.price}</h3>
             <h3>{product.category}</h3>

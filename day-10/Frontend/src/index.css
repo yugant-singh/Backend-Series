@@ -105,6 +105,7 @@ body,
   justify-content: center;
   align-items: flex-start;
   overflow-y: auto;
+  margin-top: 130px;
 }
 
 /* ========== PRODUCT CARD ========== */
@@ -404,11 +405,18 @@ body,
   .form button {
     width: 100%;
     max-width: 100%;
-    padding: 0.9rem 2rem;
+    padding: 0.9rem 1rem;
     font-size: 1rem;
+  }
+  .main-btn{
+    flex-direction: column;
+    justify-content: center;
+   
+    
   }
 
   .product-list {
+    margin-top: 240px;
     padding: 1.5rem;
     gap: 1.5rem;
   }
@@ -509,10 +517,34 @@ input:focus-visible {
   outline-offset: 2px;
 }
 
-.main-btn{
+
+
+.main-btn {
+  position: fixed;
+  z-index: 999;
   display: flex;
-  align-items: center;
   justify-content: space-around;
+  width: 100%;
+  background-color:#0f0c29;
+}
+.main-btn .heading{
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  padding: 1rem;
+ 
+  
+}
+.heading h1{
+  
+  font-size: 2.6rem;
+  font-weight: 500;
+  opacity: 0.9;
+}
+.heading h4{
+  font-size: 1.3rem;
+  font-weight: 500;
+  opacity: 0.9;
 }
 .main-btn button{
    
@@ -521,9 +553,34 @@ input:focus-visible {
     width: fit-content;
     border-radius: 0.5rem;
     margin: 1rem;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
 }
+
 .main-btn button:active{
   scale: 0.9;
 }
 
 
+
+
+
+.overlay {
+  position: fixed;
+  top:0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+.form-sec {
+  background: rgb(81, 77, 77);
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px;
+}

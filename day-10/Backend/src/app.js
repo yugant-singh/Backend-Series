@@ -4,6 +4,7 @@ const app = express();
 const productModel = require("./model/product.model")
 app.use(cors())
 app.use(express.json())
+app.use(express.static("./public"))
 //  Create POST Method
 
 app.post("/api/products", async (req, res) => {
@@ -46,6 +47,7 @@ app.patch("/api/products/:id", async (req, res) => {
 
     })
 })
+
 
 
 
