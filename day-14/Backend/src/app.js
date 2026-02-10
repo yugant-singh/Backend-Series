@@ -1,18 +1,22 @@
 const express = require("express");
 const cors = require("cors")
 const path = require("path")
-const app =express()
+const app = express()
 const authRouter = require("./routes/auth.route")
 const cookieParser = require("cookie-parser")
-app.use(express.static("./public"))
+
 app.use(cors())
 app.use(express.json())
 app.use(cookieParser())
-// make the prefix for regiater api
+
+// API routes
 app.use("/api/auth", authRouter)
 
+// Static files
+app.use(express.static("./public"))
 
-app.get('*', (req, res) => {
+
+app.use((req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'))
 })
 
