@@ -19,7 +19,7 @@ const [loginMessageType, setLoginMessageType] = useState("")
     setRegName("")
     setRegEmail("")
     setRegPassword("")
-    axios.post("https://backend-series-2.onrender.com/api/auth/register", {
+    axios.post("http://localhost:3000/api/auth/register", {
       name: regName,
       email: regEmail,
       password: regPassword
@@ -52,7 +52,7 @@ const [loginMessageType, setLoginMessageType] = useState("")
       setLoginMessage("")
       setLgPassword("")
       setLgEmail("")
-    axios.post("https://backend-series-2.onrender.com/api/auth/login",{
+    axios.post("http://localhost:3000/api/auth/login",{
       email:lgEmail,
       password:lgPassword
     })
