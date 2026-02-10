@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors")
+const path = require("path")
 const app =express()
 const authRouter = require("./routes/auth.route")
 const cookieParser = require("cookie-parser")
@@ -11,7 +12,8 @@ app.use(cookieParser())
 app.use("/api/auth", authRouter)
 
 
-
-
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'))
+})
 
 module.exports = app
