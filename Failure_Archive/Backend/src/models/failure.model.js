@@ -6,6 +6,7 @@ const failureSchema = new mongoose.Schema({
     tags: [String],
     isAnonymous: Boolean,
     relatableCount: Number,
+    
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "users",
