@@ -20,26 +20,11 @@ async function createPostController(req, res) {
     })
 
 
-    const token = req.cookies.token
-    if (!token) {
-        return res.status(401).json({
-            message: "Token not provided! unauthorized access"
-        })
-    }
-    let decode = null
-    try {
-        decode = jwt.verify(token, process.env.JWT_SECRET)
-    }
-    catch (err) {
-        return res.status(401).json({
-            message: "Invalid token! unauthorized access"
-        })
-    }
-
+   
     const post = await postModel.create({
         caption: req.body.caption,
         imgUrl: result.url,
-        user: decode.id
+        user: req.user.id
     })
 
     res.status(201).json({
@@ -50,24 +35,8 @@ async function createPostController(req, res) {
 }
 
 async function getPostcontroller(req, res) {
-    const token = req.cookies.token
-    if (!token) {
-        return res.status(401).json({
-            message: "Token not found! unauthorized access"
-        })
-    }
-
-    let decode;
-
-    try {
-        decode = jwt.verify(token, process.env.JWT_SECRET)
-    } catch (err) {
-        return res.status(401).json({
-            message: "token invalid! unauthorized access"
-        })
-    }
-
-    userId = decode.id
+ 
+    userId = req.user.id
 
     const posts = await postModel.find({ user: userId })
     if (!posts) {
@@ -85,23 +54,9 @@ async function getPostcontroller(req, res) {
 
 async function getPostDetailsController(req,res){
     const postId = req.params.postId
-const token = req.cookies.token
-if(!token){
-    return res.status(401).json({
-        message:"Token not found! unauthorized access",
-    })
-}
 
-let decode ;
-try{
-    decode = jwt.verify(token,process.env.JWT_SECRET)
-}catch(err){
-    return res.status(401).json({
-        message:"token invalid! unauthorized access"
-    })
-}
 
-userId = decode.id
+userId = req.user.id
 const post = await postModel.findById(postId)
 if(!post){
     return res.status(404).json({

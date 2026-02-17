@@ -47,6 +47,11 @@ async function createFailureController(req, res) {
 
 }
 
+async function getAllFailureController(req,res){
+    
+}
+
 module.exports = {
-    createFailureController
+    createFailureController,
+    getAllFailureController
 }
