@@ -92,8 +92,28 @@ const bcrypt = require("bcryptjs")
     })
 
 }
+async function getMeController(req,res){
+
+    const userId = req.user.id
+    const user  = await userModel.findById(userId)
+    if(!user){
+        return res.status(404).json({
+            message:"user not found"
+        })
+    }
+    res.status(200).json({
+        message:"User fetched Successfully",
+        user:{
+            username:user.username,
+            email:user.email,
+            profile_url:user.profile_url
+
+        }
+    })
+}
 
 module.exports = {
     registerController,
-    loginController
+    loginController,
+    getMeController
 }
