@@ -1,10 +1,17 @@
 import axios from 'axios'
 
 const api = axios.create({
-    baseURL:"http://localhost:3000/api/posts",
-    withCredentials:true
+    baseURL: "http://localhost:3000/api/posts",
+    withCredentials: true
 })
 
-// /api/post | Method => GET
+export const getFeed = async () => {
+    try {
+        const response = await api.get("/feed")
 
-export const getAll
+        return response.data
+    }
+    catch (err) {
+        console.log(err)
+    }
+}

@@ -78,8 +78,20 @@ res.status(200).json({
 
 }
 
+async function  getFeedController(req,res){
+
+
+const posts  = await postModel.find()
+.populate("user" ,"username bio email profile_url")
+res.status(200).json({
+    message:"posts fetched successfully",
+    posts
+})
+}
+
 module.exports = {
     createPostController,
     getPostcontroller,
-  getPostDetailsController
+  getPostDetailsController,
+  getFeedController
 }

@@ -14,7 +14,7 @@ const Login = () => {
     async function loginSubmitHandler(e) {
         e.preventDefault()
         await handleLogin(username, password)
-       navigate("/profile")
+       navigate("/")
 
     }
     return (

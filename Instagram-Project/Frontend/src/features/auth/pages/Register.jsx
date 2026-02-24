@@ -12,7 +12,7 @@ const navigate = useNavigate()
 
         e.preventDefault()
         await handleRegister(username,email,password)
-      navigate("/profile")
+      navigate("/")
 
     }
 

@@ -12,4 +12,5 @@ postRouter.get("/", identifyUser,postController.getPostcontroller)   //get metho
 
 postRouter.get("/details/:postId",identifyUser,postController.getPostDetailsController)                  
 
+postRouter.get("/feed",identifyUser,postController.getFeedController)
 module.exports = postRouter
