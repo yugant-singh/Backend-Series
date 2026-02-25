@@ -1,11 +1,14 @@
 .feed-page {
+    width: 100%;
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.5rem;
+   
+
+
 
     .feed {
-        max-width: 400px;
-        width: 100%;
+        width: 600px;
 
         .posts {
             width: 100%;
@@ -15,32 +18,36 @@
 
             .post {
                 width: 100%;
-                background-color: rgb(92, 71, 71);
-                padding: 0.5rem;
+               
+                padding: 1rem;
                 border-radius: 1rem;
+
                 display: flex;
                 flex-direction: column;
                 gap: 0.5rem;
-                padding-block: 1rem;
-
+                
 
                 .user {
-
                     display: flex;
                     gap: 1rem;
                     align-items: center;
 
                     .img {
-                       display: flex;
-                       justify-content: center;
-                       align-items: center;
-                       border: 2px solid transparent;
-                       border-radius: 50%;
-                       background: conic-gradient(rgb(153, 0, 255),rgb(192, 88, 13),rgb(153, 0, 255)) border-box;
-                       color: transparent;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        border: 2px solid transparent;
+                        border-radius: 50%;
+
+                        background:
+                          conic-gradient(
+                            rgb(153, 0, 255),
+                            rgb(192, 88, 13),
+                            rgb(153, 0, 255)
+                          ) border-box;
 
                         img {
-                            width:2rem;
+                            width: 2rem;
                             aspect-ratio: 1/1;
                             border-radius: 50%;
                         }
@@ -52,29 +59,32 @@
                     object-fit: cover;
                     border-radius: 1rem;
                 }
-                .icon{
+
+                .icon {
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
-                    .left{
+
+                    .left {
                         display: flex;
                         gap: 0.8rem;
-                      
                     }
 
-                    svg{
+                    svg {
                         width: 1.4rem;
                         aspect-ratio: 1/1;
                         color: white;
-                          
                     }
-                    button{
+
+                    button {
                         border: none;
                         outline: none;
                         background: transparent;
+                        cursor: pointer;
                     }
                 }
             }
+            
         }
     }
 }

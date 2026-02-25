@@ -4,22 +4,29 @@ main {
   justify-content: center;
   align-items: center;
   padding: 20px;
+  background: #0f0f0f;
 }
 
 .form-container {
   width: 100%;
   max-width: 350px;
-  background: #bbbaba;
-  border: 1px solid #dbdbdb;
+  background: #1c1c1c;
+  border: 1px solid #2a2a2a;
   padding: 40px 40px 20px 40px;
   text-align: center;
   border-radius: 6px;
+  color: #fff;
 }
 
 .form-container h1 {
   margin-bottom: 25px;
   font-size: 28px;
   font-weight: 600;
+
+  background: linear-gradient(#DB3073, #F99545);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 form {
@@ -31,22 +38,27 @@ form input {
   width: 100%;
   padding: 10px;
   margin-bottom: 8px;
-  border: 1px solid #dbdbdb;
-  background: #fafafa;
+  border: 1px solid #333;
+  background: #121212;
   border-radius: 4px;
   font-size: 14px;
+  color: white;
+}
+
+form input::placeholder {
+  color: #888;
 }
 
 form input:focus {
   outline: none;
-  border-color: #a8a8a8;
-  background: #fff;
+  border-color: #DB3073;
+  background: #181818;
 }
 
 form button {
   margin-top: 10px;
   padding: 8px;
-  background-color: #0095f6;
+  background: linear-gradient(#DB3073, #F99545);
   border: none;
   color: #fff;
   font-weight: 600;
@@ -56,16 +68,18 @@ form button {
 }
 
 form button:hover {
-  background-color: #1877f2;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.6);
 }
 
 .form-container p {
   margin-top: 20px;
   font-size: 14px;
+  color: #bbb;
 }
 
 .toggleLink {
-  color: #0095f6;
+  color: #F99545;
   font-weight: 600;
   text-decoration: none;
 }

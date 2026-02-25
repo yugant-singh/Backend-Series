@@ -1,0 +1,33 @@
+.layout {
+  display: flex;
+background: linear-gradient(
+    135deg,
+    #f5f7fb,
+    #eef2f7,
+    #ffffff
+  );
+}
+
+/* LEFT SIDEBAR */
+
+
+
+/* RIGHT SIDEBAR */
+
+
+/* CENTER FEED */
+.mainContent {
+  margin-left: 240px;
+  margin-right: 320px;
+
+background-color: #111;
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+}
+.layout {
+  display: grid;
+  grid-template-columns: 250px 1fr 320px;
+  min-height: 100vh;
+}

@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { PostContext } from "../post.context";
-import {getFeed} from '../services/post.api'
+import {getFeed ,createPost} from '../services/post.api'
 
 export const usePost= ()=>{
     
@@ -14,11 +14,26 @@ const getFeedHandler = async ()=>{
         const response = await getFeed()
         setfeed(response.posts)
     }
-    catch(err){}
+    catch(err){
+        throw err
+    }
+    finally{
+        setLoading(false)
+    }
+}
+const createPostHandler = async(file,caption)=>{
+    setLoading(true)
+    try{
+        const response = await createPost(file,caption)
+        setfeed([response.post,...feed])
+    }
+    catch(err){
+        throw err
+    }
     finally{
         setLoading(false)
     }
 }
 
-return {loading,post,feed,getFeedHandler}
+return {loading,post,feed,getFeedHandler,createPostHandler}
 }

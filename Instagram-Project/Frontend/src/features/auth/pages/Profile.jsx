@@ -6,8 +6,9 @@ const Profile = () => {
 
 
     async function getData() {
-        await handleGetMe()
+      const response  =   await handleGetMe()
 
+     console.log(user)
         
     }
 
@@ -22,6 +23,7 @@ const Profile = () => {
             <h1>{user.username}</h1>
             <img src={user.profile_url} alt="" />
             <h2>{user.email}</h2>
+            <h2>{user.id}</h2>
             </div>}
           
         </div>
