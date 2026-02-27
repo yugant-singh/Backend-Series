@@ -21,7 +21,7 @@
                
                 padding: 1rem;
                 border-radius: 1rem;
-
+background-color: #222;
                 display: flex;
                 flex-direction: column;
                 gap: 0.5rem;
@@ -33,6 +33,8 @@
                     align-items: center;
 
                     .img {
+                        width: 2rem;
+                        aspect-ratio: 1/1;
                         display: flex;
                         justify-content: center;
                         align-items: center;
@@ -46,9 +48,10 @@
                             rgb(153, 0, 255)
                           ) border-box;
 
-                        img {
-                            width: 2rem;
-                            aspect-ratio: 1/1;
+                        .img {
+
+                         height: 50px;
+                         width: 50px;
                             border-radius: 50%;
                         }
                     }
@@ -56,6 +59,7 @@
 
                 img {
                     width: 100%;
+                    height: 100%;
                     object-fit: cover;
                     border-radius: 1rem;
                 }

@@ -4,7 +4,7 @@ import { login, register, getMe } from '../services/auth.api'
 
 export function useAuth() {
     const context = useContext(AuthContext)
-    const { user, loading, setLoading, setUser } = context
+    const {  loading, setLoading, setUser,user } = context
     const handleLogin = async (username, password) => {
         setLoading(true)
         try {
@@ -32,7 +32,8 @@ export function useAuth() {
             setLoading(false)
         }
     }
-     const handleGetMe = async () => {
+    
+      const handleGetMe = async () => {
         setLoading(true)
         try {
             const response = await getMe()
@@ -45,6 +46,5 @@ export function useAuth() {
             setLoading(false)
         }
     }
-
-    return {user,loading,handleGetMe,handleRegister,handleLogin}
+    return {loading,handleRegister,handleLogin,handleGetMe,user}
 }

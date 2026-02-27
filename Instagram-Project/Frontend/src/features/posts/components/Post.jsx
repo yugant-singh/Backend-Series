@@ -1,4 +1,5 @@
 import React from 'react'
+import '../style/post.scss'
 
 const Post = ({caption,imgUrl,user}) => {
     const {username,profile_url} = user

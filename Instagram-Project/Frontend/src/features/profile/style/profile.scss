@@ -1,0 +1,108 @@
+.profile {
+  max-width: 950px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* HEADER */
+
+.profile__header {
+  display: flex;
+  gap: 60px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profile__avatar img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile__username {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+
+  button {
+    padding: 6px 14px;
+    border: 1px solid #ccc;
+    background: white;
+    cursor: pointer;
+    border-radius: 6px;
+  }
+}
+
+.profile__bio {
+  margin-top: 10px;
+}
+
+/* STATS */
+
+.profile__stats {
+  display: flex;
+  gap: 40px;
+  margin: 20px 0;
+
+  div {
+    text-align: center;
+
+    strong {
+      display: block;
+      font-size: 18px;
+    }
+
+    span {
+      color: gray;
+    }
+  }
+}
+
+/* TABS */
+
+.profile__tabs {
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid #dbdbdb;
+  border-bottom: 1px solid #dbdbdb;
+
+  button {
+    padding: 14px 20px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-weight: 600;
+    color: rgb(211, 206, 206);
+  }
+
+  .active {
+    color: black;
+    border-top: 2px solid black;
+  }
+}
+
+/* POSTS GRID */
+
+.profile__posts {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+
+.post {
+  position: relative;
+  cursor: pointer;
+  
+
+  img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+  }
+
+  &:hover {
+    opacity: 0.85;
+  }
+}

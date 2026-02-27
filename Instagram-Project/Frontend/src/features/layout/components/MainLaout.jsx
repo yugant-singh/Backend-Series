@@ -1,7 +1,7 @@
 import React from 'react'
 import Sidebar from './Sidebar'
 import { Outlet } from 'react-router-dom'
-import RightSidebar from './RightSidebar'
+
 import '../styles/layout.scss'
 
 const MainLaout = () => {
@@ -12,7 +12,7 @@ const MainLaout = () => {
         <Outlet/>
     </div>
 
-    <RightSidebar/>
+   
     </>
   )
 }

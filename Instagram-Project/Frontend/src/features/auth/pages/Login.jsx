@@ -8,7 +8,7 @@ import { useAuth } from '../hooks/useAuth'
 const Login = () => {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
-    const { user, loading, handleLogin } = useAuth()
+    const {  loading, handleLogin } = useAuth()
     const navigate = useNavigate()
 
     async function loginSubmitHandler(e) {

@@ -47,7 +47,8 @@ async function getPostcontroller(req, res) {
 
     res.status(200).json({
         message: "posts fetch successfully",
-        posts
+        posts,
+        postCount:posts.length
     })
 
 }
