@@ -28,10 +28,10 @@ const Profile = () => {
 
   return (
     <div className="profile">
-    <ProfileHeader user={user} />
+   {user && <ProfileHeader user={user} />}
     <ProfileStatsList/>
     <ProfileTabList/>
-    <ProfilePostList/>
+   { userPosts && <   ProfilePostList userPosts ={userPosts} />}
    </div>
   );
 };

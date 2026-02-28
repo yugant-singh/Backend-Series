@@ -1,6 +1,6 @@
 const ProfileHeader = (props) => {
 
-  console.log(props.user)
+ 
   return (
     <section className="profile__header">
 

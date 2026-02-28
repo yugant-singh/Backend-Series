@@ -1,22 +1,17 @@
-const dummyPosts = Array.from({ length: 9 });
 
-const ProfilePostList = () => {
-
+const ProfilePostList = ({userPosts}) => {
+console.log(userPosts)
   return (
     <section className="profile__posts">
 
-      {dummyPosts.map((_, index) => (
+     {userPosts.map(function(userPost,idx){
 
-        <div key={index} className="post">
+      return <div key={idx}  className="post">
 
-          <img
-            src={`https://picsum.photos/400?random=${index}`}
-            alt="post"
-          />
-
-        </div>
-
-      ))}
+        <img src={userPost.imgUrl} alt="img" />
+        <p>{userPost.caption}</p>
+      </div>
+     })}
 
     </section>
   );
